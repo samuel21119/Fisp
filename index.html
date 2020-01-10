@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/53cf81d745.js" crossorigin="anonymous"></script>
+  <title>Index</title>
+</head>
+<body>
+  <h1>Fisp</h1>
+  <h2 style="font-size: 20px;">Url: <a style="color: white;"></a></h2>
+  <div class="view" id="view">
+    <div class="file files" style="display: none;">
+      <div class="layout">
+        <left><i class="fas fa-file-pdf"></i><div class="t"></div></left>
+        <right></right>
+      </div>
+    </div>
+    <div class="file" style="border-bottom-width: 4px;">
+      <div class="layout">
+        <left><div class="t">TYPE</div>&nbsp;</left>
+        <right>FILE NAME</right>
+      </div>
+    </div>
+  </div>
+  <div id="footer" class="footer">
+    <a href="https://github.com/samuel21119" style="text-decoration: inherit;">
+      Samuel Huang&nbsp;<i class="fab fa-github"></i>&nbsp;&nbsp;2020
+    </a>
+  </div>
+</body>
+
+
+<!-- Script -->
+<script id="icon">
+  const icon = {
+    "word": "fa-file-word",
+    "ppt": "fa-file-powerpoint",
+    "excel": "fa-file-excel",
+    "video": "fa-file-video",
+    "pdf": "fa-file-pdf",
+    "image": "fa-file-image",
+    "code": "fa-file-code",
+    "audio": "fa-file-audio",
+    "archive": "fa-file-archive",
+    "file": "fa-file",
+    "folder": "fa-folder"
+  };
+  function get_file_icon(type) {
+    type = type.toLowerCase();
+    return icon[type] === undefined ? icon["file"] : icon[type];
+  }
+</script>
+<script id="on_load">
+  document.getElementsByTagName("a")[0].innerText = window.location.href;
+  document.getElementsByTagName("a")[0].setAttribute("href", window.location.href);
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        console.log(httpRequest.responseText)
+        file = JSON.parse(httpRequest.responseText);
+        for (var i = 0; i < file.length; i++) {
+          var choose = document.getElementsByClassName("file")[0];
+          var cln = choose.cloneNode(true);
+          var id = `file${i + 1}`;
+          cln.setAttribute("id", id);
+          cln.setAttribute("onclick", `location.href='${file[i]["name"]}'`);
+          cln.style.display = "block";
+          cln.getElementsByClassName("fas")[0].setAttribute("class", `fas ${get_file_icon(file[i]["type"])}`);
+          cln.getElementsByClassName("t")[0].innerText = file[i]["type"].toUpperCase();
+          cln.getElementsByTagName("right")[0].innerText = file[i]["name"];
+          document.getElementById("view").append(cln);
+          console.log(cln);
+        }
+      }
+    }
+  };
+  httpRequest.open('GET', "file.json", true);
+  httpRequest.send();
+</script>
+
+
+<!-- Style Sheet -->
+<style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+  * {
+    cursor: default;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  body {
+    justify-content: center;
+    background-color: rgba(64, 64, 64, 5);
+    color: white;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .view {
+    border-collapse: collapse;
+    border-color: #ffffff;
+    border-width: 5px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+
+    width: 100%;
+    min-width: 600px;
+    border-style: solid;
+  }
+  .file {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    background-color: rgba(64, 64, 64, 5);
+    margin: auto;
+    margin-top: 0px;
+    vertical-align: middle;
+    line-height: 40px; 
+    border-color: #ffffff;
+    border-bottom-width: 0.2px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    height: 40px;
+    width: 100%;
+    min-width: 600px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .files:hover {
+    background-color: #0366fc;
+    cursor: pointer;
+  }
+  .layout {
+    box-sizing: border-box;
+  }
+  left {
+    float: left;
+    width: 130px;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    display: inline-block;
+  }
+  i {
+    padding-left: 5px;
+    display: inline-block;
+  }
+  right {
+    float: left;
+    margin-left: 15px;
+    /*width: 70%;*/
+    display: inline-block;
+  }
+  .t {
+    position: absolute;
+    left: 40px;
+    /*margin-left: 3px;*/
+    display: inline-block;
+  }
+  .footer {
+    font-family: verdana;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 17px;
+    opacity: 0.5;
+  }
+  a {
+    color: inherit;
+    cursor: pointer;
+  }
+</style>
