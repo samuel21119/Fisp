@@ -5,7 +5,7 @@ Modern HTTP **F**ile **I**ndexer for **S**tatic **P**age.
 
 ![Icon](images/logo.png)
 
-This project is use for static page hosting file indexer, such as github pages.
+This project is use for static page hosting file indexer, such as github pages.  
 Demo: [https://samuel.nctu.me/fisp](https://samuel.nctu.me/fisp)
 
 ![Screenshot](images/demo.png)
@@ -23,7 +23,7 @@ Copy `index.html` to every folder,
 and generate `file.json` in every folder. (Instructions in [usage](#usage))
 
 ## Running the tests
-It's suggested that test this project with a file hosting server. Due to CORS policy, the website can't fetch `file.json` with XMLHttpRequest if simpily open `index.html` from file explorer.  
+It's suggested that testing this project with a file hosting server. Due to CORS policy, the website can't fetch `file.json` with XMLHttpRequest if simpily open `index.html` from file explorer.  
 For example, use a python simple HTTP server:  
 `$ python -m SimpleHTTPServer`
 
