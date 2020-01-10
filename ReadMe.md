@@ -59,7 +59,7 @@ See [docs](https://github.com/samuel21119/fisp/tree/master/docs) for more detail
 
 
 ## Todo
- - [] Write `file.json` generator.
+ - [ ] Write `file.json` generator.
 
 ## Built With
 
