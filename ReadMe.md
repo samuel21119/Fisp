@@ -40,7 +40,7 @@ The file `file.json` is an array, consisting different objects, each representin
      "name": "presentation.pptx"}
 ]
 ```
-Every objects have two data, *type* ans *name*, if the *type* is one of the following one, webpage will display a specific icon, otherwise, it'll display *file* icon.
+Every objects have two data, *type* and *name*, if the *type* is one of the following one, webpage will display a specific icon, otherwise, it'll display *file* icon.
 
 | Type | Icon |
 | ------ | ----------- |
