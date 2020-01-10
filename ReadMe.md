@@ -28,7 +28,7 @@ For example, use a python simple HTTP server:
 `$ python -m SimpleHTTPServer`
 
 ## Usage
-After copyed `index.html` to every folder, we need `file.json` in every folder too, in order make it be able to recognize which files is located in this directory.  
+After copied `index.html` to every folder, we need `file.json` in every folder too, in order make it be able to recognize which files is located in this directory.  
 The file `file.json` is an array, consisting different objects, each representing a file or folder. It may look like this:  
 ```json
 [
