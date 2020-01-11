@@ -55,7 +55,7 @@ Every objects have two data, *type* and *name*, if the *type* is one of the foll
 | file | <img src="images/file.png" width="30"> |
 | folder | <img src="images/folder.png" width="30"> |
 
-See [docs](https://github.com/samuel21119/fisp/tree/master/docs) for more details about `file.json`.
+See [docs](docs) for more details about `file.json`.
 
 
 ## Todo
